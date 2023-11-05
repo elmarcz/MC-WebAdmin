@@ -1,0 +1,84 @@
+<div class="title">
+  <h1>Servers</h1>
+  <p>{{subtitle}}</p>
+</div>
+<div class="contentainer">
+  {{#each servers}}
+    <a class="server" href="/servers/server/{{_id}}">
+      <div class="img"><img
+          src="https://illustoon.com/photo/dl/7823.png"
+          alt=""
+        /></div>
+
+      <div class="content">
+        <div class="Server">
+          <h1>{{serverName}}</h1>
+        </div>
+        <div class="Server">
+          <p>URL: {{Url}}</p>
+        </div>
+        <div class="Server">
+          <p>Location: {{Location}}</p>
+        </div>
+      </div>
+    </a>
+  {{/each}}
+</div>
+<nav class="bottom">
+  <a href="/servers/add">Add a Server</a>
+  {{#if hidden}}
+    <a class="hidden" id="element">Attacking Servers</a>
+    {{else}}
+    <a id="element">Attacking Servers</a>
+  {{/if}}
+  <a href="/servers/delete">Delete a Server</a>
+</nav>
+
+<style>
+    body{
+    overflow: hidden;
+  }
+  *{ text-decoration: none; }
+  .title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        height: 70px;
+        width: 98vw;
+    }
+
+    .server {
+    height: 150px;
+    width: 450px;
+    margin: 15px;
+    background: black;
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    transition: all 200ms;
+    justify-content: center;
+    text-align:left;
+}
+</style>
+
+<script>
+    const element = document.querySelector('#element');
+    let action = ""
+
+    if(window.location.href.split('servers')[1] == '/attacking-'){
+        action = "/servers"
+        element.innerHTML = "Servers"
+    } else {
+        action = "/servers/attacking-servers"
+        element.innerHTML = "Attacking Servers"
+    }
+
+    element.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = action
+    })
+</script>
+
+{{>ddos}}

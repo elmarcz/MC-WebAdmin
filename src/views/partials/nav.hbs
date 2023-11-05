@@ -1,0 +1,54 @@
+<nav>
+  {{#if session.user.username}}
+    <div class="e a">
+      <a href="/" id="Home">🏠</a>
+    </div>
+    <div class="e">
+      <a href="/projectstatus" id="ProjectStatus">Project Status</a>
+      <a href="/settings" id="Settings">Settings</a>
+      <a href="/ddos" id="DDoS">DDoS</a>
+  {{/if}}
+  {{#if session.user.username}}
+    </div>
+
+    <a class="e a" href="/logout">
+      <img src="https://cdn.discordapp.com/avatars/825841449388081153/036f38f90fc90af0059dc5dd5dfe0796.png">
+    </a>
+  {{else}}
+  <p id="counter">...</p>
+  {{/if}}
+</nav>
+
+<style>
+.e.a {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    font-size: x-large;
+    overflow: hidden;
+}
+
+.e.a img {
+    height: 44px;
+    border-radius: 8px;
+}
+
+.e {
+    background: black;
+    padding: 18px;
+    margin: 15px;
+    border-radius: 15px;
+}
+
+nav{
+    position: relative;
+    cursor: crosshair !important;
+}
+
+nav a{
+    position: relative;
+    cursor: crosshair !important;
+}
+</style>

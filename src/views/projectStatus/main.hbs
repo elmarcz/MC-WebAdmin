@@ -1,0 +1,26 @@
+<div class="contentainer">
+  {{#each data}}
+    <a class="server" href="/">
+      <div class="img">
+        <img src="https://illustoon.com/photo/dl/7823.png" alt="" />
+      </div>
+
+      <div class="content">
+        <div class="Server">
+          <p>NAME: {{name}}</p>
+        </div>
+        <div class="Server">
+          <p>Url: {{url}}</p>
+        </div>
+      </div>
+    </a>
+  {{/each}}
+</div>
+
+<style>
+    body{
+    overflow: hidden;
+  }
+</style>
+
+{{>projectStatus}}

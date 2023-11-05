@@ -1,0 +1,114 @@
+<div class="title">
+  <h1>Attack</h1>
+</div>
+<div class="container">
+  <div class="container2">
+    {{#if data}}
+      <a class="box serverID" href="/servers/server/{{data.serverID}}">
+        <img
+          src="https://cdn4.iconfinder.com/data/icons/web-hosting-79/135/Dataserver-1024.png"
+          alt="Server ID"
+        />
+        <h3>{{data.serverID}}</h3>
+      </a>
+      <a
+        class="box url"
+        href="/attacks/attack/findAllAttacksForThisUrl/{{data.url}}"
+      >
+        <img
+          src="https://cdn3.iconfinder.com/data/icons/colorful-guache-social-media-logos-1/159/social-media_web-512.png"
+          alt="URL"
+        />
+        <h3>{{data.url}}</h3>
+      </a>
+      <a
+        class="box times"
+        href="/attacks/attack/findAllAttacksForThisTimes/{{data.times}}"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/9545/9545749.png"
+          alt="Times"
+        />
+        <h3>{{data.times}}</h3>
+      </a>
+      <a class="box time"
+      href="/attacks/attack/findAllAttacksForThisTime/{{data.time}}"
+      >
+        <img
+          src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2pjOWN5NnY5YnpiNnVoZGpnNWNhOTgwbjR4bmI5emRvam10a25yYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/w8ldCLe1krf68/giphy.gif"
+          alt="Time"
+        />
+        <h3>{{data.time}}</h3>
+      </a>
+      <a class="box time">
+        <img src="https://cdn-icons-png.flaticon.com/512/5261/5261913.png" alt="Time" />
+        <h3>{{data.hourStart}}</h3>
+      </a>
+      <a class="box time">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/5581/5581145.png"
+          alt="Time"
+        />
+        <h3>{{data.hourEnd}}</h3>
+      </a>
+      <a class="box IP" 
+        href="/attacks/attack/findAllAttacksForThisPublicIP/{{data.publicIP}}"
+      >
+        <img
+          src="https://betandbeat.com/wp-content/uploads/2022/02/ip-tracking-icon.svg"
+          alt="Time"
+        />
+        <h3>{{data.publicIP}}</h3>
+      </a>
+      <a class="box privateip"
+      href="/attacks/attack/findAllAttacksForThisPrivateIP/{{data.privateIP}}"
+      >
+        <img
+          src="https://freeip.me/static/article_img/understandingvpns/ipaddresses.svg"
+          alt="Time"
+        />
+        <h3>{{data.privateIP}}</h3>
+      </a>
+      <a class="box time">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/995/995286.png"
+          alt="Time"
+        />
+        <h3>{{data.port}}</h3>
+      </a>
+    {{/if}}
+  </div>
+</div>
+
+<nav class="bottom">
+  <a href="/attacks/attack/{{data.id}}/delete">Delete</a>
+</nav>
+
+<style>
+  nav.bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container{ 
+    position: relative; display: flex; justify-content: center; width: 100vw; height:80vh;
+  flex-wrap: wrap} a{margin: 25px;} .box{ height: 215px; width: 250px; border:
+  2px solid black; border-radius: 15px; display: flex; flex-wrap: wrap;
+  flex-direction: column; align-items: center; justify-content: center;
+  font-size: 13px; cursor: pointer; transition: all 300ms;} .serverID{
+  background-color: #00acfd; } .box:hover{ transform: scale(1.02); }
+  .box:active{ transform: scale(0.9); } .box img{ height: 180px; width: 180px; }
+  .url{ background-color: #ff1493; }.times{ background-color: #248aff;
+  }.privateip{ background: #f0c48a; }.time{ background-color: #131514; }
+  .delete{ background-color: red; } .img{ height: 40px; width: 40px; background:
+  url('https://cdn.discordapp.com/avatars/825841449388081153/036f38f90fc90af0059dc5dd5dfe0796.gif?size=60');
+  border-radius: 15px; transition: all 300ms; }.box.IP { background: #0074ff; }
+</style>
+<style>
+  *{ text-decoration: none; } .title{ width: 100vw; display: flex;
+  justify-content: center; align-items: center; font-size: 20px; } a.box.IP {
+  background: #0074ff; } .container2{ width: 90%; display: flex;
+  justify-content: center; align-items: center; flex-wrap: wrap; }
+</style>
+
+{{>ddos}}

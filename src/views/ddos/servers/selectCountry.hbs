@@ -1,0 +1,58 @@
+<form class="content" action="/attackFind/selectCountry" method="POST">
+    <div class="container">
+        <label for="cars">select a country</label>
+
+        <select name="selectCountry" id="cars">
+            {{#each countris}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+        <input type="submit" value="Select a Country"></input>
+    </div>
+</form>
+
+<style>
+    .container{
+        width: 450px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    input[type="submit"]{
+        background: transparent;
+        border: 1.5px;
+        border-radius: 5px;
+        font-size: 14px;
+        height: 30px;
+        padding: 5px;
+        width: 250px;
+        margin: 5px;
+        cursor: pointer;
+        color: white;
+        transition: all 300ms;
+    }
+
+    input[type="submit"]:hover{
+        border: 1.5px solid white;
+    }
+    .content {
+        width: 100vw;
+        height: 80vh;
+        font-size: x-large;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    select {
+     background: transparent;
+     border: 1.5px solid white;
+     border-radius: 5px;
+     font-size: 14px;
+     height: 30px;
+     padding: 5px;
+     width: 250px;
+     margin: 5px;
+  }
+</style>

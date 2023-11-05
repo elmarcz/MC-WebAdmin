@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+body {
+  background: black !important;
+  color: white !important;
+  height: 100vh;
+  width: 100vh;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+nav {
+  height: 8vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a {
+  background: black;
+  padding: 10px;
+  border-radius: 15px;
+  color: white;
+  margin: 15px;
+  text-decoration: none;
+  transition: all 300ms;
+}
+
+nav a:hover,
+.active {
+  background: white;
+  color: black;
+}
+
+.concontainer {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.concontainer div {
+  margin: 20px;
+}
+
+.concontainer .form-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.concontainer .form-group input[type="text"] {
+  height: 20px;
+}
+
+.concontainer input[type="submit"] {
+  height: 20px !important;
+}
+
+.contentainer{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  user-select: none;
+  position: relative;
+}
+
+.mainpage .server{
+  width: 150px;
+}
+
+.projectstatus{
+  height: 120px!important;
+}
+img.projectstatus {
+  margin: 15px;
+}
+
+.server {
+  height: 150px;
+  width: 450px;
+  margin: 15px;
+  background: hsl(218deg 50% 91%);
+  border-radius: 15px;
+  color: black;
+  display: flex;
+  align-items: center;
+  transition: all 200ms;
+  justify-content: center;
+  text-align: center;
+}
+
+.serverCheck{
+  transition: all 300ms;
+}
+
+.server:hover, .serverCheck:hover{
+  transform: scale(1.1);
+}
+
+.server img {
+  height: 150px;
+}
+
+.server .content{
+  max-height: 150px !important;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title{
+  flex-direction: column;
+}
+
+*{ text-decoration: none; } .title{ 
+  position: relative; height: 70px; display: flex;
+justify-content: center; align-items: center; font-size: 20px; margin: 20px; }
+.title h1 { height: 25px; margin-bottom: 20px; }
+
+a.card{
+background-color: black;
+color: white;
+}
+
+.hidden {
+    display: none !important;
+}

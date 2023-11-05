@@ -1,0 +1,192 @@
+<form action="/attack" method="POST">
+  <div class="title">
+    <h1>Attack</h1>
+      <div class="input-group">
+          <div class="j90" id="SearchAdvanced">
+            <input
+              type="text"
+              id="username"
+              name="Url"
+              placeholder="Enter the server URL"
+              required
+            />
+            <div class="j90">
+            <input type="text" id="DOM" name="Dom" required placeholder="DOM" />
+            <input
+              type="text"
+              id="DOM"
+              name="Times"
+              placeholder="Enter the time to attack"
+              required
+          />
+          </div>
+          </div>
+          <div class="buttonsContainer">
+            <input type="submit" id="button">
+            <a href="/attackFind/selectCountry" id="button">Select Country</a>
+          </div>
+      </div>
+  </div>
+  <br>
+  <div class="contentainer">
+    {{#each servers}}
+      <div class="serverCheck">
+        <input type="checkbox" name="name" value="{{id}}">
+          <a class="server">
+            <div class="img">
+              <img src="https://illustoon.com/photo/dl/7823.png"/>
+            </div>
+            <div class="content">
+                <div class="Server">
+                  <h1>{{serverName}}</h1>
+                </div>
+                <div class="Server">
+                  <p>URL: {{Url}}</p>
+                </div>
+                <div class="Server">
+                  <p>Location: {{Location}}</p>
+                </div>
+            </div>
+          </a>
+        </input>
+      </div>
+    {{/each}}
+  </div>
+</form>
+
+<div class="other">
+  <button id="button1">+</button>
+  <button id="button2">-</button>
+</div>
+
+<script>
+  const button1 = document.querySelector('#button1');
+  const button2 = document.querySelector('#button2');
+
+  button1.addEventListener('click', (e) => {
+    marcarTodos(e)
+  })
+
+  button2.addEventListener('click', (e) => {
+    desMarcarTodos(e)
+  })
+
+  function marcarTodos(event) {
+    event.preventDefault();
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+      checkbox.checked = true;
+    });
+  }
+
+  function desMarcarTodos(event) {
+    event.preventDefault();
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+      checkbox.checked = false;
+    });
+  }
+</script>
+
+<style>
+
+  .serverCheck .server:hover{
+    transform: scale(1);
+  }
+
+  .other {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .buttonsContainer{
+    margin-bottom: 35px;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #button1, #button2, #button{
+    border: 2px solid transparent;
+    padding: 5px !important;
+    min-width: 50px;
+    background: #000;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: all 300ms;
+  }
+
+  #button1:hover, #button2:hover, #button:hover{
+    border: 2px solid #000;
+    background: none;
+  }
+  
+  #DOM{
+    width: 179.5px !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  #username{
+    margin-top: 15px;
+  }
+
+  input[type="checkbox"] {
+    z-index: 1;
+    position: absolute;
+    margin-top: 26px;
+    margin-left: 25px;
+  }
+
+  .serverCheck{
+    border: 1px solid white;
+    margin: 15px;
+    border-radius: 15px;
+  }
+
+  body{
+    overflow-y: auto !important;
+  }
+
+  *{ text-decoration: none; }
+
+  .title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    height: 100px;
+    width: 98vw;
+    margin-top: 80px;
+  }
+
+  .server {
+    height: 150px;
+    width: 450px;
+    margin: 15px;
+    background: black;
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    transition: all 200ms;
+    justify-content: center;
+    text-align:left;
+  }
+</style>
+
+<style>body{overflow: hidden;}
+  body { user-select:all; background-color: #000; color: #fff; font-family: Arial, sans-serif;
+  width: 100vw; height: 100vh; } .container { width: 400px; color: #000; margin:
+  0 auto; padding: 40px;background: hsl(218deg 50%
+  91%); border-radius: 4px; text-align: center; } h1 { margin-bottom: 20px; }
+  .form-group { margin-bottom: 20px; text-align: left; } input[type="text"]{
+  width: 382px !important; padding: 8px; border: 1px solid #ccc; border-radius:
+  4px; } button[type="submit"] { width: 90%; height:40px; background-color:
+  #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+  button[type="submit"]:hover { background-color: #333; }
+</style>
+
+{{>ddos}}

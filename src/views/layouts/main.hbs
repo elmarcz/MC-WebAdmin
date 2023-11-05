@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/index.css">
+        <link href='https://unpkg.com/css.gg@2.0.0/icons/css/lock.css' rel='stylesheet'>
+        <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/83883889?v=4" type="image/x-icon">
+
+        <title>MC Web Admin</title>
+    </head>
+    <body>
+        {{#if session.user.bgImg}}
+        <img src="{{session.user.bgImg}}" id="bg">
+        {{else}}
+        <img src="https://lh3.googleusercontent.com/fife/AKsag4O2ucsmrDSC1ALLE0r28irQTC9eEC1H76fYDaI7OHjhA8duQcCyfa8LB7fCBI1uwYVMZTZ9aDYeBaWTfDoNB4jOjq-JomtiDLGDfEZJ5dzBX5rr5yDyBiQLpqOgwnvurLI00ZHfg6UzmAEKiMR4gFuwTMqagkQqbJHShsWZ_rWxGYFEewdy72hmHnfDTEBZZ2pi8eoZpbRn77EI3zHh9KIpbs2VOoKzNQX9OwYLXnjl1VTEbMO522PE8DlHAj0V20JhyEiEafSpoNsK0AIvtHucIoo0Zp908XCXIY1awvs1smhXE26qhNvjsFcbqQtMzjXWp0eW6D__7jqELKgRd_qgwLKOc9GtUNILIP85TCumDgrw5C-ZrZGnCiklQhIMB6pXOAOsNiAjWz-RHGDFItUbFII65zJ0OktEIBwTQxrLNvFiFioYgCKS4VPD6rWIgkucTzpu7aXpzxyeF9IXTLRLvPdkiAB0CeJlisBsK1US6H2xqZpR2LgwguaRQcBEthnEmBsJmUF8I5FkAWbDSAQXqQ-Mv_WYn8D92TUtGartz32RX_osaXGhoyqvdLV9RLeSIrl5P_xmtgMOdWdcL2TR9Kz3fXkNaj1TGvQnPE6iSvYiWKYXTc0cG3KPQ-sCFHCVvb6kcezCdhVRvWcJ4E9I7KChm9YV72cG8I4wjfIa2rEj03yyJ_EAVpHdocGDkC8OcpMhkqnnr6yzodQELrZHLrhHTorl4UxmL0AqAIoigk2aYE1Y9F2SiLRRD2JOcBB1Ks7tR2hCJCLHC9liTXG6n1ot0ks0NEEfx6yo05szB8BO9FzQRtaeyMh8Yxcbz1cLUzCsnQmZTW5eT5j7hZfxZ1gExrHJ31-4o_ZbwdEs8Uf6ZqFDS8d-sQXKvIx8BDeB4lrQsrc8k9zey6TreF96z9ksr-jZDGgCxikS-GN37VqH-0s4Rzaq4CGnw0ntprn3apDYmK_Ovtk27Dp3zk7dzaNxy1Mwv8KWLA8kfvS4--9b01YmET5baJ1hGf7_QjfM5rPUPcS-5T1D5D5MywFTpOJELiT15BVeVd33Y2FdbRDBIYJ3XJwefFRX3y2ZY7dsToxJ6IxHRUv7sUz4aBTUBR1_SA=w641-h955" id="bg">
+        {{/if}}
+        <style>
+            img#bg {
+                position: absolute;
+                z-index: -1;
+                filter: blur(13px);
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+        {{>nav}}
+        {{{body}}}
+    </body>
+</html>
