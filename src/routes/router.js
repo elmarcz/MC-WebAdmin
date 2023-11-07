@@ -21,4 +21,5 @@ module.exports = (app) => {
   require('./auth.routes')(app, functions, isLoggedIn, isNotLoggedIn)
   require('./ddos.routes')(app, functions, isLoggedIn)
   require('./projectstatus.routes')(app, functions, isLoggedIn)
+  require('./codes.routes')(app, functions, isLoggedIn)
 }
