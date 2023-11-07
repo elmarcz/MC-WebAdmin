@@ -26,10 +26,35 @@
           type="text"
           id="username"
           name="bgImg"
-          value="{{bgImg}}"
+          value="{{user.bgImg}}"
           placeholder="Enter the image url"
         />
       </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+    <div class="container">
+    <h1>User Data</h1>
+    <form method="POST" action="/settings/user">
+        <div class="form-group">
+            <input
+                type="text"
+                id="username"
+                name="username"
+                value="{{user.username}}"
+                placeholder="Enter your name"
+            />
+        </div>
+        <div class="form-group">
+            <input
+                type="text"
+                id="username"
+                name="profilePic"
+                value="{{user.profilePic}}"
+                placeholder="Enter the profile image url"
+            />
+        </div>
       <button type="submit">Save</button>
     </form>
   </div>

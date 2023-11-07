@@ -1,6 +1,22 @@
 module.exports = (app, functions, isLoggedIn, isNotLoggedIn) => {
     const aspectConfigSchema = require('../models/aspectConfigSchema')
+    const userDb = require('../models/userSchema')
     //let interval;
+
+    const add = async() => {
+        const db = require('../models/userSchema.js')
+        const user = await db({
+            name: "Izan",
+            idChecker: "https://idchecker.marcmedrano.repl.co/verify",
+            Codes: true,
+            Settings: true,
+            DDoSAttacks: true,
+            DDoSServers: true,
+            DDoSAnalytics: true
+        })
+
+        await user.save()
+    }
 
     app.get('/login', isNotLoggedIn, async (req, res) => {
         /*
@@ -47,8 +63,9 @@ module.exports = (app, functions, isLoggedIn, isNotLoggedIn) => {
             .then(response => response.json())
             .then(async (result) => {
                 if (result.status == true) {
-                    const data = await aspectConfigSchema.findOne({ username: 'Marc' })
-                    req.session.user = data
+                    const data1 = await userDb.findOne({ username: req.body.username })
+
+                    req.session.user = data1
                     res.redirect('/');
                 } else {
                     res.redirect('/login');
